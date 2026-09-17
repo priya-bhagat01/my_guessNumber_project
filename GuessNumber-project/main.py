@@ -7,6 +7,7 @@ import random
 def game():
     wins = 0
     loss = 0
+    hiscore = 0
 
     while True:
         computerGuess = random.randint(1,5) #randint gives number between two numbers
@@ -26,13 +27,13 @@ def game():
         hiscore = f.read()
         if hiscore:
             if(hiscore != ""):
-                hiscore = int(wins)
+                hiscore = int(hiscore)
             else:
                 hiscore = 0
 
-    if(str(wins) > str(hiscore)):
+    if(wins > hiscore):
         with open("hi-score.txt", "w") as f:
-            f.write(wins)
+            f.write(str(wins))
 
     print(f"Total wins: {wins}")
     print(f"Total losess: {loss}")
