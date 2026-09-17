@@ -35,9 +35,9 @@ def game():
         with open("hi-score.txt", "w") as f:
             f.write(str(wins))
 
-    print(f"Total wins: {wins}")
-    print(f"Total losess: {loss}")
-
+    print(f"Final score: {wins}")
+    print(f"Highscore: {hiscore}")
+    
     return wins
 
 game()
