@@ -4,16 +4,39 @@
 
 import random
 
-computerGuess = random.randint(1,20) #randint gives number between two numbers
-playerGuess = int(input("Enter your guess between 1 to 20: "))
-wins = 0
-loss = 0
+def game():
+    wins = 0
+    loss = 0
 
-print(f"Your Guess: {playerGuess}, Computer Guess: {computerGuess}")
+    while True:
+        computerGuess = random.randint(1,5) #randint gives number between two numbers
+        playerGuess = int(input("Enter your guess between 1 to 5: "))
 
-if(playerGuess == computerGuess):
-    wins += 1
-    print("You won")
-else:
-    loss += 1
-    print("You lose")
+        print(f"Your Guess: {playerGuess}, Computer Guess: {computerGuess}")
+
+        if(playerGuess == computerGuess):
+            wins += 1
+            print("You won")
+        else:
+            loss += 1
+            print("You lose")
+            break
+
+    with open("hi-score.txt") as f:
+        hiscore = f.read()
+        if hiscore:
+            if(hiscore != ""):
+                hiscore = int(wins)
+            else:
+                hiscore = 0
+
+    if(str(wins) > str(hiscore)):
+        with open("hi-score.txt", "w") as f:
+            f.write(wins)
+
+    print(f"Total wins: {wins}")
+    print(f"Total losess: {loss}")
+
+    return wins
+
+game()
